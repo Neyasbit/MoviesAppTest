@@ -10,6 +10,7 @@ import com.example.ui_search_feature.databinding.FragmentSearchBinding
 import com.example.ui_search_feature.model.MovieUI
 import dagger.hilt.android.AndroidEntryPoint
 import moxy.ktx.moxyPresenter
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -23,9 +24,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
 
     private val presenter: SearchPresenter by moxyPresenter { presenterProvider.get() }
 
-    private val adapter = SearchScreenAdapter(onGenreClick = { genre, position ->
-        presenter.getMoviesByGenre(genre, position)
-    },
+    private val adapter = SearchScreenAdapter(
+        onGenreClick = { genre, position ->
+            presenter.getMoviesByGenre(genre, position)
+        },
         onTryClick = { presenter.onRefresh() },
         onMoviesClick = { name ->
             navigator.navigateToFlow(NavigationFlow.DetailFlow(name))
@@ -34,7 +36,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rv.adapter = adapter
+        binding.apply {
+            rv.adapter = adapter
+            rv.setHasFixedSize(true)
+        }
     }
 
     override fun showMovies(movies: List<MovieUI>) {
@@ -58,6 +63,5 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
         binding.rv.layoutManager = manager
     }
 }
-
 
 

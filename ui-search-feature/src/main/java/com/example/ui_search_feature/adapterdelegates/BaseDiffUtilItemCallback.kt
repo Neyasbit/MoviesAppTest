@@ -5,8 +5,9 @@ import com.example.ui_search_feature.model.DisplayableItem
 
 
 class BaseDiffUtilItemCallback : DiffUtil.ItemCallback<DisplayableItem>() {
-    override fun areItemsTheSame(oldItem: DisplayableItem, newItem: DisplayableItem): Boolean =
-        oldItem.itemId == newItem.itemId
+    override fun areItemsTheSame(oldItem: DisplayableItem, newItem: DisplayableItem): Boolean {
+        return oldItem.itemId == newItem.itemId
+    }
 
     override fun areContentsTheSame(oldItem: DisplayableItem, newItem: DisplayableItem): Boolean {
         return oldItem.equals(newItem)

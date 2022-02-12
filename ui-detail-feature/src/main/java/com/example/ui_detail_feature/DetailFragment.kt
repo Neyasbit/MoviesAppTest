@@ -35,8 +35,8 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(
             movieImage.loadImage(movie.imageUrl)
             movieName.text = movie.name
             movieDes.text = movie.description
-            movieYear.append(movie.year)
-            movieRating.append(movie.rating)
+            movieYear.text = getString(R.string.year_title, movie.year)
+            movieRating.text = getString(R.string.rating_title, movie.rating)
         }
     }
 

@@ -18,10 +18,7 @@ class DetailPresenter @Inject constructor(
     fun getMovie(name: String) {
         presenterScope.launch {
             when (val status = getMovieUseCase.invoke(name)) {
-                is MovieStatus.Success -> {
-                    viewState.showMovie(status.movies.first().toDetail())
-                    Timber.e("detail ${status.movies.first()}")
-                }
+                is MovieStatus.Success -> viewState.showMovie(status.movies.first().toDetail())
                 is MovieStatus.Failure -> viewState.showError()
             }
         }
