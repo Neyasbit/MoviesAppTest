@@ -39,12 +39,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
         binding.apply {
             rv.adapter = adapter
             rv.setHasFixedSize(true)
+            settingManager()
         }
     }
 
     override fun showMovies(movies: List<MovieUI>) {
-        settingManager()
         adapter.items = movies
+        adapter.notifyDataSetChanged()
     }
 
     override fun showProgress(isProgress: Boolean) {

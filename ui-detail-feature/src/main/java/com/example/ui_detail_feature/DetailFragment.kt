@@ -41,6 +41,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(
     }
 
     override fun showError() {
-        Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), getString(R.string.error_text), Toast.LENGTH_SHORT).show()
     }
 }

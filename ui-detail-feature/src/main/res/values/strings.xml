@@ -2,4 +2,5 @@
 <resources>
     <string name="year_title">Год: %s</string>
     <string name="rating_title">Рейтинг: %s</string>
+    <string name="error_text">Something went wrong</string>
 </resources>

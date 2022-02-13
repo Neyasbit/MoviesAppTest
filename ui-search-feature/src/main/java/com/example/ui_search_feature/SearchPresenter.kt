@@ -56,7 +56,7 @@ class SearchPresenter @Inject constructor(
                 viewState.showMovies(creteUiItems())
             }
             is MovieStatus.Failure ->
-                viewState.showError(MovieUI.Error(status.errorHandler.localizedMessage))
+                viewState.showError(MovieUI.Error(status.errorHandler.localizedMessage!!))
         }
     }
 
