@@ -102,6 +102,6 @@ class SearchPresenter @Inject constructor(
 
 private fun MovieSuccess.toMovie() = MovieUI.Movie(
     id = id,
-    imageUrl = imageUrl,
+    imageUrl = imageUrl ?: "",
     name = localizedName,
 )

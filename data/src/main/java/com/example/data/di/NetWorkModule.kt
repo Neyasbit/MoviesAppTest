@@ -45,7 +45,7 @@ object NetWorkModule {
     @Provides
     fun api(kotlinConverter: Converter.Factory, client: OkHttpClient): ApiDataSource =
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(client)
             .addConverterFactory(kotlinConverter)
             .build()

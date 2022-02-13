@@ -14,7 +14,7 @@ sealed class MovieUI : DisplayableItem {
     class Movie(
         val id: Int,
         val name: String,
-        val imageUrl: String?
+        val imageUrl: String
     ) : MovieUI() {
         override val itemId get() = id
     }
@@ -31,7 +31,7 @@ sealed class MovieUI : DisplayableItem {
     }
 
     class Error(
-        val message: String?
+        val message: String
     ) : MovieUI() {
         override val itemId: Int
             get() = hashCode()

@@ -21,6 +21,23 @@ android {
         minSdk = AppConfig.minSdk
         targetSdk = AppConfig.targetSdk
     }
+    buildTypes {
+        release {
+            buildConfigField(
+                "String",
+                AppConfig.BASE_URL_NAME,
+                "\"https://s3-eu-west-1.amazonaws.com/sequeniatesttask/\""
+            )
+        }
+        debug {
+            buildConfigField(
+                "String",
+                AppConfig.BASE_URL_NAME,
+                "\"https://s3-eu-west-1.amazonaws.com/sequeniatesttask/\""
+            )
+
+        }
+    }
 }
 dependencies {
     implementation(project(":domain"))

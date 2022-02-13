@@ -27,9 +27,9 @@ class DetailPresenter @Inject constructor(
 
 private fun MovieSuccess.toDetail() =
     DetailMovieUi(
-        description = description,
+        description = description ?: "",
         id = id,
-        imageUrl = imageUrl,
+        imageUrl = imageUrl ?: "",
         localizedName = localizedName,
         name = name,
         rating = rating?.format(2) ?: "",

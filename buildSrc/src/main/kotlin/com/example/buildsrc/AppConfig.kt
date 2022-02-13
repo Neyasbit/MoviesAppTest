@@ -11,4 +11,5 @@ object AppConfig {
     const val androidTestInstrumentation = "androidx.test.runner.AndroidJUnitRunner"
     const val proguardOptimize = "proguard-android-optimize.txt"
     const val proguardRulesPro = "proguard-rules.pro"
+    const val BASE_URL_NAME = "BASE_URL"
 }

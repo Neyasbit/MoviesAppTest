@@ -1,7 +1,7 @@
 package com.example.data.di
 
-import com.example.data.repository.RepositoryImpl
-import com.example.domain.Repository
+import com.example.data.repository.MoviesRepositoryImpl
+import com.example.domain.MoviesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,5 +14,5 @@ interface RepositoryModule {
 
     @Singleton
     @Binds
-    fun bindsRepository(repository: RepositoryImpl): Repository
+    fun bindsRepository(repository: MoviesRepositoryImpl): MoviesRepository
 }

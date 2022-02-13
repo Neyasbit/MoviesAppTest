@@ -3,7 +3,7 @@ package com.example.data.repository
 import com.example.data.coroutines.CoroutineWrapper
 import com.example.data.locale_data_source.MovieDao
 import com.example.data.resource.ResourceProvider
-import com.example.domain.Repository
+import com.example.domain.MoviesRepository
 import com.example.domain.entity.ErrorHolder
 import com.example.domain.entity.MovieStatus
 import kotlinx.coroutines.withContext
@@ -12,12 +12,12 @@ import java.io.IOException
 import javax.inject.Inject
 
 
-class RepositoryImpl @Inject constructor(
+class MoviesRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val dao: MovieDao,
     private val resource: ResourceProvider,
     private val dispatcher: CoroutineWrapper
-) : Repository {
+) : MoviesRepository {
 
     override suspend fun fetchMovies(): MovieStatus =
         withContext(dispatcher.io) { fetchMoviesFromDb() }

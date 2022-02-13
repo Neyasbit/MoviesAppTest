@@ -3,7 +3,7 @@ package com.example.domain
 import androidx.annotation.StringRes
 import com.example.domain.entity.MovieStatus
 
-interface Repository {
+interface MoviesRepository {
 
     suspend fun fetchMovies(): MovieStatus
 
