@@ -10,7 +10,6 @@ import com.example.ui_search_feature.databinding.FragmentSearchBinding
 import com.example.ui_search_feature.model.MovieUI
 import dagger.hilt.android.AndroidEntryPoint
 import moxy.ktx.moxyPresenter
-import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Provider
 

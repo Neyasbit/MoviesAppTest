@@ -5,9 +5,11 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.navigation.Navigation
 import com.example.navigation.NavigationFlow
+import com.example.navigation.Navigator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Provider
@@ -16,29 +18,29 @@ import javax.inject.Provider
 @AndroidEntryPoint
 class SingleActivity : AppCompatActivity(R.layout.activity_main), Navigation {
 
-    @Inject
-    lateinit var navigatorProvider: Provider<Navigation>
+    /*
+        делал через di, но там костыль приходится использовать,
+        можно посмотреть на гите до последнего комита
+     */
 
-    @Inject
-    lateinit var navProvider: Provider<NavController>
+    private lateinit var navigator: Navigation
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /*
-        Это костыль потому, что findNavController не успевает отработать.
-        Можно решить через supportFragmentManager,
-        найти  через  него контролер. Но я уже сделал через di
-         */
-        Handler(Looper.myLooper()!!).post {
-            setupActionBarWithNavController(navProvider.get())
-        }
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+                as NavHostFragment
+
+        navController = navHostFragment.navController
+        navigator = Navigator(navController)
+        setupActionBarWithNavController(navController)
     }
 
     override fun navigateToFlow(flow: NavigationFlow) =
-        navigatorProvider.get().navigateToFlow(flow)
+        navigator.navigateToFlow(flow)
 
     override fun onSupportNavigateUp() =
-        navProvider.get().navigateUp() || super.onSupportNavigateUp()
+        navController.navigateUp() || super.onSupportNavigateUp()
 
 }

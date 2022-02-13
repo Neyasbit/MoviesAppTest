@@ -7,7 +7,6 @@ import com.example.ui_detail_feature.model.DetailMovieUi
 import kotlinx.coroutines.launch
 import moxy.MvpPresenter
 import moxy.presenterScope
-import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
